@@ -1,7 +1,10 @@
 from pyspark.sql import SparkSession
 from pyspark.ml.classification import LogisticRegression
+from pyspark.ml.classification import DecisionTreeClassifier
 from pyspark.ml.feature import VectorAssembler
 from pyspark.sql.types import StructType, StructField, DoubleType, IntegerType
+from pyspark.ml.classification import RandomForestClassifier
+from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 
 if __name__ == '__main__':
 
@@ -10,10 +13,10 @@ if __name__ == '__main__':
                 .builder\
                 .appName("train")\
                 .getOrCreate()
-        
+
         # schema
         schema = StructType([
-                StructField('""""fixed acidity""""', DoubleType(), True),
+                StructField('"""""fixed acidity""""', DoubleType(), True),
                 StructField('""""volatile acidity""""', DoubleType(), True),
                 StructField('""""citric acid""""', DoubleType(), True),
                 StructField('""""residual sugar""""', DoubleType(), True),
@@ -24,7 +27,7 @@ if __name__ == '__main__':
                 StructField('""""pH""""', DoubleType(), True),
                 StructField('""""sulphates""""', DoubleType(), True),
                 StructField('""""alcohol""""', DoubleType(), True),
-                StructField('""""quality""""', IntegerType(), True),
+                StructField('""""quality"""""', IntegerType(), True),
         ])
 
         # read file
@@ -35,15 +38,23 @@ if __name__ == '__main__':
         .load("/home/dea1013/CS643-PA2/TrainingDataset.csv")
 
         # create features and label column
-        feature_cols = [col.replace('"','') for col in df.columns[:-1]]
-        assembler = VectorAssembler(inputCols=feature_cols, outputCol='features', handleInvalid = "keep")
-        df = assembler.transform(df).select('""""quality""""','features')
-        df = df.withColumnRenamed('""""quality""""', 'label')
+        for col in df.columns:
+                df = df.withColumnRenamed(col, col.replace('"',''))
+        df = df.withColumnRenamed('quality', 'label')
+        feature_cols = df.columns[:-1]
+        assembler = VectorAssembler(inputCols=feature_cols, outputCol='features', handleInvalid = "skip")
+        df = assembler.transform(df).select('label','features')
 
         # instantiate model
-        lr = LogisticRegression(maxIter=10, regParam=0.3, elasticNetParam=0.8)
+        rf = RandomForestClassifier(numTrees=10)
 
         # train model
-        lrModel = lr.fit(df)
+        model = rf.fit(df)
 
-        print(lrModel.summary)
+        # predictions
+        predictions = model.transform(df)
+
+        # evaluation
+        evaluator = MulticlassClassificationEvaluator(labelCol='label', predictionCol='prediction', metricName='accuracy')
+        accuracy = evaluator.evaluate(predictions)
+        print('Accuracy:', accuracy)
