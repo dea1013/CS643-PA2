@@ -35,8 +35,8 @@ if __name__ == '__main__':
         .load("/home/dea1013/CS643-PA2/TrainingDataset.csv")
 
         # create features and label column
-        feature_cols = df.columns[:-1]
-        assembler = VectorAssembler(inputCols=feature_cols, outputCol='features')
+        feature_cols = [col.replace('"','') for col in df.columns[:-1]]
+        assembler = VectorAssembler(inputCols=feature_cols, outputCol='features', handleInvalid = "keep")
         df = assembler.transform(df).select('""""quality""""','features')
         df = df.withColumnRenamed('""""quality""""', 'label')
 
