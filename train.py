@@ -13,18 +13,18 @@ if __name__ == '__main__':
         
         # schema
         schema = StructType([
-                StructField('""""fixed acidity""""', DoubleType()),
-                StructField('""""volatile acidity""""', DoubleType()),
-                StructField('""""citric acid""""', DoubleType()),
-                StructField('""""residual sugar""""', DoubleType()),
-                StructField('""""chlorides""""', DoubleType()),
-                StructField('""""free sulfur dioxide""""', IntegerType()),
-                StructField('""""total sulfur dioxide""""', IntegerType()),
-                StructField('""""density""""', DoubleType()),
-                StructField('""""pH""""', DoubleType()),
-                StructField('""""sulphates""""', DoubleType()),
-                StructField('""""alcohol""""', DoubleType()),
-                StructField('""""quality""""', IntegerType()),
+                StructField('""""fixed acidity""""', DoubleType(), True),
+                StructField('""""volatile acidity""""', DoubleType(), True),
+                StructField('""""citric acid""""', DoubleType(), True),
+                StructField('""""residual sugar""""', DoubleType(), True),
+                StructField('""""chlorides""""', DoubleType(), True),
+                StructField('""""free sulfur dioxide""""', IntegerType(), True),
+                StructField('""""total sulfur dioxide""""', IntegerType(), True),
+                StructField('""""density""""', DoubleType(), True),
+                StructField('""""pH""""', DoubleType(), True),
+                StructField('""""sulphates""""', DoubleType(), True),
+                StructField('""""alcohol""""', DoubleType(), True),
+                StructField('""""quality""""', IntegerType(), True),
         ])
 
         # read file
