@@ -1,13 +1,13 @@
 import argparse
 
 from pyspark.sql import SparkSession
-from pyspark.ml.classification import RandomForestClassifier
+from pyspark.ml.classification import RandomForestClassificationModel
 from preprocess import read_csv, clean
 from evaluate import f1
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser()
-	parser.add_argument('--path')
+	parser.add_argument('path')
 	args = parser.parse_args()
 
 	# create spark session
@@ -23,7 +23,7 @@ if __name__ == '__main__':
 	df = clean(df)
 
 	# model
-	model = RandomForestClassifier.load("model")
+	model = RandomForestClassificationModel.load("model")
 
 	# get f1 score
 	score = f1(df,model)
