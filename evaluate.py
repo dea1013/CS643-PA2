@@ -15,5 +15,5 @@ def f1(df,model=None):
 		df = model.transform(df)
 
 	# return f1 score	
-	evaluator = MulticlassClassificationEvaluator(metricName='f1Measure')
+	evaluator = MulticlassClassificationEvaluator(metricName='f1')
 	return evaluator.evaluate(df)
