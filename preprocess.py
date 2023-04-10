@@ -34,7 +34,7 @@ def read_csv(spark,path):
 	.option('header', True)\
 	.schema(schema)\
 	.load(path)
-        
+
 	return df
 
 """Clean dataframe
