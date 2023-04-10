@@ -1,16 +1,16 @@
 from pyspark.ml.feature import VectorAssembler
 from pyspark.sql.types import StructType, StructField, DoubleType, IntegerType
 
-"""Read dataframe from CSV
-
-Parameter:
-	spark (pyspark.sql.SparkSession): Spark session
-	path (String): Path to CSV file 
-
-Returns:
-	pyspark.sql.DataFrame: Read dataframe
-"""
 def read_csv(spark,path):
+	"""Read dataframe from CSV
+
+	Parameter:
+		spark (pyspark.sql.SparkSession): Spark session
+		path (String): Path to CSV file 
+
+	Returns:
+		pyspark.sql.DataFrame: Read dataframe
+	"""
     
 	# schema
 	schema = StructType([
@@ -34,18 +34,20 @@ def read_csv(spark,path):
 	.option('header', True)\
 	.schema(schema)\
 	.load(path)
-
+        
 	return df
 
-"""Clean dataframe
 
-Parameter:
-	df (pyspark.sql.DataFrame): Dataframe
 
-Returns:
-	pyspark.sql.DataFrame: Clean dataframe
-"""
 def clean(df):
+    """Clean dataframe
+
+	Parameter:
+		df (pyspark.sql.DataFrame): Dataframe
+
+	Returns:
+		pyspark.sql.DataFrame: Clean dataframe
+	"""
     
     # rename columns and remove quotes
     for col in df.columns:
