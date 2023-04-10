@@ -1,7 +1,7 @@
 from pyspark.sql import SparkSession
 from pyspark.ml.classification import RandomForestClassifier
 from pyspark.ml.evaluation import MulticlassClassificationEvaluator
-from .preprocess import read_csv, clean
+from preprocess import read_csv, clean
 
 if __name__ == '__main__':
 	
