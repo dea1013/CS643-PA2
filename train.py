@@ -22,3 +22,6 @@ if __name__ == '__main__':
 
 	# train model
 	model = rf.fit(df)
+
+	# export
+	model.save("model")
