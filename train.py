@@ -1,6 +1,5 @@
 from pyspark.sql import SparkSession
 from pyspark.ml.classification import RandomForestClassifier
-from pyspark.ml.evaluation import MulticlassClassificationEvaluator
 from preprocess import read_csv, clean
 
 if __name__ == '__main__':
@@ -12,7 +11,7 @@ if __name__ == '__main__':
 	.getOrCreate()
 
 	# read file
-	df = read_csv(spark,"/home/dea1013/CS643-PA2/TrainingDataset.csv")
+	df = read_csv(spark,"s3://dilip-anand-cs643-pa2/TrainingDataset.csv")
 
 	# clean dataframe
 	df = clean(df)
@@ -24,4 +23,4 @@ if __name__ == '__main__':
 	model = rf.fit(df)
 
 	# export
-	model.save("model")
+	model.write().overwrite().save("s3://dilip-anand-cs643-pa2/model")
