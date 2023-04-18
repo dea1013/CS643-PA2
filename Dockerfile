@@ -8,8 +8,6 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-ADD model ./model
-
 RUN apt update -y \
 && apt upgrade -y \
 && apt-get install default-jdk -y
