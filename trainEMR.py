@@ -80,7 +80,7 @@ if __name__ == '__main__':
 	df = clean(df)
 
 	# instantiate model
-	rf = RandomForestClassifier(numTrees=10)
+	rf = RandomForestClassifier(numTrees=40, maxDepth=5, impurity='entropy')
 
 	# train model
 	model = rf.fit(df)
