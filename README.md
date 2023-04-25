@@ -92,7 +92,7 @@ Link to Container: https://hub.docker.com/r/dea1013/cs643-pa2
   - app.py
   - preprocess.py
   - evaluate.py
-  - model (downloaded directory)
+  - model
   - Dockerfile
 - Run: \
   `python3 -m venv venv` \
