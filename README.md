@@ -2,7 +2,7 @@
 
 Link to Container: https://hub.docker.com/r/dea1013/cs643-pa2 
 
-# Files
+## Files
 - app.py: Python program for running model
 - evaluate.py: Contains code for evaluating models
 - preprocess.py: Contains code for preprocessing the dataset
