@@ -53,6 +53,7 @@ Link to Container: https://hub.docker.com/r/dea1013/cs643-pa2
 ### Running Application Without Docker
 
 #### Set Up Directory
+- Clone repository: `git clone https://github.com/dea1013/CS643-PA2.git`
 - Create a directory and download the following files into the directory:
   - app.py
   - preprocess.py
@@ -88,12 +89,14 @@ Link to Container: https://hub.docker.com/r/dea1013/cs643-pa2
   `sudo apt install python3.10-venv`
 
 #### Build Docker
-- Create and move files to directory:
+- Clone repository: `git clone https://github.com/dea1013/CS643-PA2.git`
+- Create and move files to new directory:
   - app.py
   - preprocess.py
   - evaluate.py
   - model
   - Dockerfile
+- cd into directory
 - Run: \
   `python3 -m venv venv` \
   `source venv/bin/activate` \
