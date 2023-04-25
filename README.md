@@ -13,7 +13,7 @@
 #### S3 Bucket
 - Create S3 bucket with the following name: dilip-anand-cs643-pa2
 - Upload following files from GitHub:
-TrainingDataset.csv
+-- TrainingDataset.csv
 train.py
 preprocess.py
 Create folder “logs”
