@@ -16,7 +16,7 @@ Link to Container: https://hub.docker.com/r/dea1013/cs643-pa2
 
 #### S3 Bucket
 - Create S3 bucket with the following name: dilip-anand-cs643-pa2
-- Upload following files from GitHub:
+- Upload following files:
   - TrainingDataset.csv
   - train.py
   - preprocess.py
