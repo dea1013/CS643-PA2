@@ -37,7 +37,7 @@ Link to Container: https://hub.docker.com/r/dea1013/cs643-pa2
 - Add a step to the EMR cluster (if not specified, assume default):
   - Type: Spark Application
   - Deploy Mode: Cluster Mode
-  - Application Location: s3://dilip-anand-cs643-pa2/trainEMR.py
+  - Application Location: s3://dilip-anand-cs643-pa2/train.py
   - Arguments:
     - --py-files s3://dilip-anand-cs643-pa2/preprocess.py
 
