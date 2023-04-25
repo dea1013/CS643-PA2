@@ -13,7 +13,7 @@ if __name__ == '__main__':
 	# create spark session
 	spark = SparkSession\
 	.builder\
-	.appName("train")\
+	.appName("app")\
 	.getOrCreate()
 
 	# read file
