@@ -36,35 +36,40 @@
   - Type: Spark Application
   - Deploy Mode: Cluster Mode
   - Application Location: s3://dilip-anand-cs643-pa2/trainEMR.py
-  - Arguments: --py-files s3://dilip-anand-cs643-pa2/preprocess.py
-  - 
-Downloading the Model
-Create and SSH into Ubuntu Linux EC2 instance
-Ensure that AWS credentials are up to date
-Run the following:
-aws s3 cp s3://dilip-anand-cs643-pa2/model model --recursive
-Cleaning Up
-Delete EMR cluster, S3 bucket, and EC2 instance (if no longer needed)
-Running Application Without Docker
-Directory
-Create a directory and download the following files into the directory:
-app.py
-preprocess.py
-evaluate.py
-TestDataset.csv
-model (downloaded directory)
-cd into the directory
-Install Packages
-Create and activate virtual environment:
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install python3.10-venv
-python3 -m venv venv
-source venv/bin/activate
-pip install numpy
-pip install pyspark
-sudo apt-get install default-jdk -y
-export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+  - Arguments:
+    - --py-files s3://dilip-anand-cs643-pa2/preprocess.py
+
+#### Downloading the Model
+- Create and SSH into Ubuntu Linux EC2 instance
+- Ensure that AWS credentials are up to date
+- Run the following:
+  `aws s3 cp s3://dilip-anand-cs643-pa2/model model --recursive`
+
+#### Cleaning Up
+- Delete EMR cluster, S3 bucket, and EC2 instance (if no longer needed)
+
+### Running Application Without Docker
+
+#### Set Up Directory
+- Create a directory and download the following files into the directory:
+  - app.py
+  - preprocess.py
+  - evaluate.py
+  - TestDataset.csv
+  - model
+- cd into the directory
+
+#### Install Packages
+- Create and activate virtual environment: \
+  `sudo apt update -y` \
+  `sudo apt upgrade -y` \
+  `sudo apt install python3.10-venv` \
+  `python3 -m venv venv` \
+  `source venv/bin/activate` \
+  `pip install numpy` \
+  `pip install pyspark` \
+  `sudo apt-get install default-jdk -y` \
+  `export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64`
 Run App
 Run: 
 python3 app.py TestDataset.csv
