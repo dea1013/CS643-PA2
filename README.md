@@ -1,6 +1,6 @@
 # CS643-PA2
 
-## GitHub Files
+## Files
 - app.py: Python program for running model
 - evaluate.py: Contains code for evaluating models
 - preprocess.py: Contains code for preprocessing the dataset
@@ -9,31 +9,35 @@
 - Dockerfile: Docker file used to create docker image
 
 ## Setup Instructions
+
 ### Training
+
 #### S3 Bucket
 - Create S3 bucket with the following name: dilip-anand-cs643-pa2
 - Upload following files from GitHub:
--- TrainingDataset.csv
-train.py
-preprocess.py
-Create folder “logs”
-EMR Cluster Specs
-Create EMR cluster with following steps (if not specified, assume default):
-Amazon EMR Release: emr-6.10.0
-Application Bundle: spark
-Instance Groups: Primary (m5.xlarge), Core (m5.xlarge), Task (m5.xlarge)
-Provisioning Configuration: Core size: 1 instance, Task size: 4 instances
-Logs Location: s3://dilip-anand-cs643-pa2/logs/
-Amazon EC2 Key Pair: vockey
-Service Role: EMR_DefaultRole
-Instance Profile: EMR_EC2_DefaultRole
-EMR Launch Step
-Add a step to the EMR cluster (if not specified, assume default):
-Type: Spark Application
-Deploy Mode: Cluster Mode
-Application Location: s3://dilip-anand-cs643-pa2/trainEMR.py
-Arguments:
---py-files s3://dilip-anand-cs643-pa2/preprocess.py
+  - TrainingDataset.csv
+  - train.py
+  - preprocess.py
+- Create folder “logs”
+
+#### EMR Cluster Specs
+- Create EMR cluster with following steps (if not specified, assume default):
+  - Amazon EMR Release: emr-6.10.0
+  - Application Bundle: spark
+  - Instance Groups: Primary (m5.xlarge), Core (m5.xlarge), Task (m5.xlarge)
+  - Provisioning Configuration: Core size: 1 instance, Task size: 4 instances
+  - Logs Location: s3://dilip-anand-cs643-pa2/logs/
+  - Amazon EC2 Key Pair: vockey
+  - Service Role: EMR_DefaultRole
+  - Instance Profile: EMR_EC2_DefaultRole
+
+#### EMR Launch Step
+- Add a step to the EMR cluster (if not specified, assume default):
+  - Type: Spark Application
+  - Deploy Mode: Cluster Mode
+  - Application Location: s3://dilip-anand-cs643-pa2/trainEMR.py
+  - Arguments: --py-files s3://dilip-anand-cs643-pa2/preprocess.py
+  - 
 Downloading the Model
 Create and SSH into Ubuntu Linux EC2 instance
 Ensure that AWS credentials are up to date
