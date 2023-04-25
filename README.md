@@ -61,7 +61,7 @@ Link to Container: https://hub.docker.com/r/dea1013/cs643-pa2
   - model
 - cd into the directory
 
-#### Install Packages
+#### Set Up Environment
 - Create and activate virtual environment: \
   `sudo apt update -y` \
   `sudo apt upgrade -y` \
@@ -80,6 +80,13 @@ Link to Container: https://hub.docker.com/r/dea1013/cs643-pa2
 
 ### Building Docker
 
+#### Set Up Environment
+- Run: \
+  `sudo apt update -y` \
+  `sudo apt upgrade -y` \
+  `sudo apt install docker.io` \
+  `sudo apt install python3.10-venv`
+
 #### Build Docker
 - Create and move files to directory:
   - app.py
@@ -87,16 +94,13 @@ Link to Container: https://hub.docker.com/r/dea1013/cs643-pa2
   - evaluate.py
   - model (downloaded directory)
   - Dockerfile
-  - Run: \
-  `sudo apt update -y` \
-  `sudo apt upgrade -y` \
-  `sudo apt install docker.io` \
-  `sudo apt install python3.10-venv` \
+- Run: \
   `python3 -m venv venv` \
   `source venv/bin/activate` \
   `pip install numpy` \
   `pip install pyspark` \
   `python3 -m pip freeze > requirements.txt` \
+  `deactivate` \
   `rm -rf venv` \
   `sudo docker build --tag dea1013/cs643-pa2 .`
 
@@ -106,13 +110,16 @@ Link to Container: https://hub.docker.com/r/dea1013/cs643-pa2
   `sudo docker push dea1013/cs643-pa2:latest`
   
 ### Running Application With Docker
-Pull Docker
-Run:
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install docker.io
-sudo docker pull dea1013/cs643-pa2:latest
-Run Docker
-sudo docker run -v $(pwd)/TestDataset.csv:/app/TestDataset.csv dea1013/cs643-pa2:latest TestDataset.csv
-The following was used for the validation set:
-sudo docker run -v $(pwd)/ValidationDataset.csv:/app/ValidationDataset.csv dea1013/cs643-pa2:latest ValidationDataset.csv
+
+#### Set Up Environment
+- Run: \
+  `sudo apt update -y` \
+  `sudo apt upgrade -y` \
+  `sudo apt install docker.io`
+
+#### Pull Docker
+- Run: `sudo docker pull dea1013/cs643-pa2:latest`
+
+#### Run Docker
+- Run: `sudo docker run -v $(pwd)/TestDataset.csv:/app/TestDataset.csv dea1013/cs643-pa2:latest TestDataset.csv`
+  - The following was used for the validation set: `sudo docker run -v $(pwd)/ValidationDataset.csv:/app/ValidationDataset.csv dea1013/cs643-pa2:latest ValidationDataset.csv`
