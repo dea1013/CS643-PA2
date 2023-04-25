@@ -72,37 +72,40 @@ Link to Container: https://hub.docker.com/r/dea1013/cs643-pa2
   `pip install pyspark` \
   `sudo apt-get install default-jdk -y` \
   `export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64`
-Run App
-Run: 
-python3 app.py TestDataset.csv
-The following was used for the validation set:
-python3 app.py ValidationDataset.csv
-The application prints out the F1 score of the model
-Building Docker
-Build Docker
-Create and move files to directory:
-app.py
-preprocess.py
-evaluate.py
-model (downloaded directory)
-Dockerfile
-Run:
-sudo apt update -y
-sudo apt upgrade -y
-sudo apt install docker.io
-sudo apt install python3.10-venv
-python3 -m venv venv
-source venv/bin/activate
-pip install numpy
-pip install pyspark
-python3 -m pip freeze > requirements.txt
-rm -rf venv
-sudo docker build --tag dea1013/cs643-pa2 .
-Push Docker
-Run:
-sudo docker login
-sudo docker push dea1013/cs643-pa2:latest
-Running Application With Docker
+
+#### Run App
+- Run: `python3 app.py TestDataset.csv`
+  - The following was used for the validation set: `python3 app.py ValidationDataset.csv`
+- The application prints out the F1 score of the model
+
+### Building Docker
+
+#### Build Docker
+- Create and move files to directory:
+  - app.py
+  - preprocess.py
+  - evaluate.py
+  - model (downloaded directory)
+  - Dockerfile
+  - Run: \
+  `sudo apt update -y` \
+  `sudo apt upgrade -y` \
+  `sudo apt install docker.io` \
+  `sudo apt install python3.10-venv` \
+  `python3 -m venv venv` \
+  `source venv/bin/activate` \
+  `pip install numpy` \
+  `pip install pyspark` \
+  `python3 -m pip freeze > requirements.txt` \
+  `rm -rf venv` \
+  `sudo docker build --tag dea1013/cs643-pa2 .`
+
+#### Push Docker
+- Run: \
+  `sudo docker login` \
+  `sudo docker push dea1013/cs643-pa2:latest`
+  
+### Running Application With Docker
 Pull Docker
 Run:
 sudo apt update -y
