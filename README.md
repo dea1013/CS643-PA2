@@ -1,5 +1,7 @@
 # CS643-PA2
 
+Link to Container: https://hub.docker.com/r/dea1013/cs643-pa2 
+
 ## Files
 - app.py: Python program for running model
 - evaluate.py: Contains code for evaluating models
